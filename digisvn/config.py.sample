@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
+SVN_PASSWORD_FILE = '/tmp/passwd'
+SVN_AUTHZ_FILE = '/tmp/authz'
+SVN_GROUP_AUTHZ_FILE = '/tmp/groups'
+
+ENCRYPT_KEY = '7rYNtm5yjqLXYaPEVI'
