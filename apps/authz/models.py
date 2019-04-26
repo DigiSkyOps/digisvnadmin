@@ -13,6 +13,7 @@ class SvnProject(models.Model):
         return u"%s - %s" % (self.project_name, self.project_ab)
 
     class Meta:
+        ordering = ['project_name', 'project_ab']
         verbose_name = u"SVN项目"
         verbose_name_plural = verbose_name
 
@@ -25,6 +26,7 @@ class SvnAuthPath(models.Model):
         return u"%s - %s" % (self.project, self.path)
 
     class Meta:
+        ordering = ['project', 'path']
         unique_together = (('project', 'path'),)
         verbose_name = u"权限路径定义"
         verbose_name_plural = verbose_name
