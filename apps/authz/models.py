@@ -41,9 +41,9 @@ class SvnUserAuth(models.Model):
 
     def save(self, *args, **kwargs):
         super(SvnUserAuth, self).save(*args, **kwargs)
-        from apps.authz.views import _svn_auth_update
+        from apps.authz.views import svn_authz
         from digisvn.config import SVN_AUTHZ_FILE
-        _svn_auth_update(SVN_AUTHZ_FILE)
+        svn_authz(SVN_AUTHZ_FILE)
 
     class Meta:
         unique_together = (('user', 'svn_auth_path'),)
@@ -61,9 +61,9 @@ class SvnGroupAuth(models.Model):
 
     def save(self, *args, **kwargs):
         super(SvnGroupAuth, self).save(*args, **kwargs)
-        from apps.authz.views import _svn_auth_update
+        from apps.authz.views import svn_authz
         from digisvn.config import SVN_AUTHZ_FILE
-        _svn_auth_update(SVN_AUTHZ_FILE)
+        svn_authz(SVN_AUTHZ_FILE)
 
     class Meta:
         unique_together = (('group', 'svn_auth_path'),)
