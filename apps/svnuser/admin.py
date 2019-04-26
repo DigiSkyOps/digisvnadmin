@@ -29,16 +29,17 @@ class ProfileInline(admin.StackedInline):
 def delete_selected(modeladmin, request, queryset):
     for i in queryset:
         i.delete()
-    from apps.authz.views import _svn_passwd_updata
-    _svn_passwd_updata(SVN_PASSWORD_FILE)
+    from apps.authz.views import svn_user_passwd
+    from digisvn.config import SVN_PASSWORD_FILE
+    svn_user_passwd(SVN_PASSWORD_FILE)
 
-    from apps.authz.views import _svn_auth_update
+    from apps.authz.views import svn_authz
     from digisvn.config import SVN_AUTHZ_FILE
-    _svn_auth_update(SVN_AUTHZ_FILE)
+    svn_authz(SVN_AUTHZ_FILE)
 
-    from apps.authz.views import _svn_group_auth_update
+    from apps.authz.views import svn_group
     from digisvn.config import SVN_GROUP_AUTHZ_FILE
-    _svn_group_auth_update(SVN_GROUP_AUTHZ_FILE)
+    svn_group(SVN_GROUP_AUTHZ_FILE)
 
     delete_selected.short_description = '删除已选项'
 
@@ -79,9 +80,9 @@ class GroupAdminForm(forms.ModelForm):
         instance = super(GroupAdminForm, self).save()
         self.save_m2m()
 
-        from apps.authz.views import _svn_group_auth_update
+        from apps.authz.views import svn_group
         from digisvn.config import SVN_GROUP_AUTHZ_FILE
-        _svn_group_auth_update(SVN_GROUP_AUTHZ_FILE)
+        svn_group(SVN_GROUP_AUTHZ_FILE)
 
         return instance
 

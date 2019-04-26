@@ -22,8 +22,8 @@ class Profile(models.Model):
             self.update_time = datetime.now()
             super(Profile, self).save(*args, **kwargs)
 
-            from apps.authz.views import _svn_passwd_updata
-            _svn_passwd_updata(SVN_PASSWORD_FILE)
+            from apps.authz.views import svn_user_passwd
+            svn_user_passwd(SVN_PASSWORD_FILE)
 
 
     class Meta:
