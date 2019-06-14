@@ -4,6 +4,10 @@ from django.db import models
 
 from django.contrib.auth.models import User, Group
 
+def get_user_fullname(self):
+    return "%s - %s%s" % (self.username,self.first_name, self.last_name)
+
+User.add_to_class("__str__", get_user_fullname)
 
 class SvnProject(models.Model):
     project_name = models.CharField(max_length=30, unique=True, verbose_name="项目名称")

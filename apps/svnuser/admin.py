@@ -49,6 +49,12 @@ class SvnUserAdmin(UserAdmin):
     ordering = ('username',)
     filter_horizontal = ()
     inlines = [ ProfileInline, ]
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'first_name', 'last_name', 'email', 'password1', 'password2'),
+        }),
+    )
 
 admin.site.unregister(User)
 admin.site.register(User, SvnUserAdmin)
