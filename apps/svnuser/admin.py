@@ -26,7 +26,7 @@ class ProfileInline(admin.StackedInline):
         models.CharField: {'widget': forms.PasswordInput},
     }
 
-def delete_selected(modeladmin, request, queryset):
+def delete_selected_and_clean_data(modeladmin, request, queryset):
     for i in queryset:
         i.delete()
     from apps.authz.views import svn_user_passwd
@@ -41,11 +41,11 @@ def delete_selected(modeladmin, request, queryset):
     from digisvn.config import SVN_GROUP_AUTHZ_FILE
     svn_group(SVN_GROUP_AUTHZ_FILE)
 
-    delete_selected.short_description = '删除已选项'
+    delete_selected_and_clean_data.short_description = 'delete selected and clean svn config'
 
 class SvnUserAdmin(UserAdmin):
-    actions = [delete_selected]
-    search_fields = ('username',)
+    actions = [delete_selected_and_clean_data]
+    search_fields = ('username', 'first_name', 'last_name', 'email')
     ordering = ('username',)
     filter_horizontal = ()
     inlines = [ ProfileInline, ]
@@ -93,7 +93,7 @@ class GroupAdminForm(forms.ModelForm):
         return instance
 
 class SvnGroupAdmin(admin.ModelAdmin):
-    actions = [delete_selected]
+    actions = [delete_selected_and_clean_data]
     form = GroupAdminForm
     filter_horizontal = ['permissions']
 
