@@ -24,4 +24,4 @@ Configuration
 
 Licensing
 -----------------------
-minio-admin is under the Apache 2.0 license.
+digisvn-admin is under the Apache 2.0 license.
