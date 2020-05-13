@@ -21,3 +21,7 @@ Configuration
 
 1. Modify the config.py. Sample file under the digisvn folder to config.py
 2. According to the profile address of your SVN service
+
+Licensing
+-----------------------
+minio-admin is under the Apache 2.0 license.
