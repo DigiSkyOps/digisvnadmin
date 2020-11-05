@@ -29,6 +29,12 @@ class SvnAuthPath(models.Model):
     def __str__(self):
         return u"%s - %s" % (self.project, self.path)
 
+    def save(self, *args, **kwargs):
+        super(SvnAuthPath, self).save(*args, **kwargs)
+        from apps.authz.views import svn_authz
+        from digisvn.config import SVN_AUTHZ_FILE
+        svn_authz(SVN_AUTHZ_FILE)
+
     class Meta:
         ordering = ['project', 'path']
         unique_together = (('project', 'path'),)
