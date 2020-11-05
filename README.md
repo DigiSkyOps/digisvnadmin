@@ -1,6 +1,8 @@
 SVN Permission Management System
 =======================
 
+Python version: 3.6
+
 Feature list
 -----------------------
 
