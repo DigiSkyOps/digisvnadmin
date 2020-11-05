@@ -63,7 +63,7 @@ class SvnUserAuth(models.Model):
         verbose_name_plural = verbose_name
 
 class SvnGroupAuth(models.Model):
-    svn_auth_path = models.ForeignKey(SvnAuthPath, on_delete=True)
+    svn_auth_path = models.ForeignKey(SvnAuthPath, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name="权限组", null=True)
     read = models.BooleanField(default=False)
     write = models.BooleanField(default=False)
