@@ -108,4 +108,3 @@ migrations/
 .mypy_cache/
 
 /digisvn/config.py
-db.sqlite3
