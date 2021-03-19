@@ -1,6 +1,6 @@
 configparser==3.7.3
 Django==2.1.7
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 gunicorn==20.0.4
 pycrypto==2.6.1
 pytz==2018.9
